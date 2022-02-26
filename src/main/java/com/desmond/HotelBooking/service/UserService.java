@@ -1,6 +1,6 @@
-package com.desmond.HotelManagement.service;
+package com.desmond.HotelBooking.service;
 
-import com.desmond.HotelManagement.entity.User;
+import com.desmond.HotelBooking.entity.User;
 
 public interface UserService {
     void addUser(User user);

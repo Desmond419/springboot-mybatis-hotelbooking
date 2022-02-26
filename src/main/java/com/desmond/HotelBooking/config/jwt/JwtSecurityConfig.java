@@ -1,6 +1,5 @@
-package com.desmond.HotelManagement.config.jwt;
+package com.desmond.HotelBooking.config.jwt;
 
-import com.desmond.HotelManagement.config.jwt.JwtTokenFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

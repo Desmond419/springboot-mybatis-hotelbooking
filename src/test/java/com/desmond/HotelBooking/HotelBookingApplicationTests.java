@@ -1,10 +1,10 @@
-package com.desmond.HotelManagement;
+package com.desmond.HotelBooking;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HotelManagementApplicationTests {
+class HotelBookingApplicationTests {
 
 	@Test
 	void contextLoads() {

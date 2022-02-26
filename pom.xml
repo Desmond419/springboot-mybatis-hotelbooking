@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.desmond</groupId>
-	<artifactId>HotelManagement</artifactId>
+	<artifactId>HotelBooking</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>HotelManagement</name>
-	<description>Spring Boot Hotel Management Application</description>
+	<name>HotelBooking</name>
+	<description>Spring Boot Hotel Booking Application</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -66,5 +66,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

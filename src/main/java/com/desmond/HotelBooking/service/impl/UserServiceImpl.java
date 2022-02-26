@@ -1,8 +1,8 @@
-package com.desmond.HotelManagement.service.impl;
+package com.desmond.HotelBooking.service.impl;
 
-import com.desmond.HotelManagement.dao.UserDao;
-import com.desmond.HotelManagement.entity.User;
-import com.desmond.HotelManagement.service.UserService;
+import com.desmond.HotelBooking.dao.UserDao;
+import com.desmond.HotelBooking.entity.User;
+import com.desmond.HotelBooking.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

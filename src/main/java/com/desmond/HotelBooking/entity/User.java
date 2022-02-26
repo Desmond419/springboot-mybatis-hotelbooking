@@ -1,4 +1,4 @@
-package com.desmond.HotelManagement.entity;
+package com.desmond.HotelBooking.entity;
 
 import java.util.Date;
 

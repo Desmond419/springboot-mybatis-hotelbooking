@@ -1,4 +1,4 @@
-package com.desmond.HotelManagement.config;
+package com.desmond.HotelBooking.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

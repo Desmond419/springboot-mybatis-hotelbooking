@@ -1,4 +1,4 @@
-package com.desmond.HotelManagement.utils;
+package com.desmond.HotelBooking.utils;
 
 import java.util.UUID;
 

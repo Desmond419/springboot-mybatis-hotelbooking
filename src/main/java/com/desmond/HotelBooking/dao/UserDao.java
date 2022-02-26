@@ -1,6 +1,6 @@
-package com.desmond.HotelManagement.dao;
+package com.desmond.HotelBooking.dao;
 
-import com.desmond.HotelManagement.entity.User;
+import com.desmond.HotelBooking.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

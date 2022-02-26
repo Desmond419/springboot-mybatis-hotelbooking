@@ -1,4 +1,4 @@
-package com.desmond.HotelManagement.config.jwt;
+package com.desmond.HotelBooking.config.jwt;
 
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Component;

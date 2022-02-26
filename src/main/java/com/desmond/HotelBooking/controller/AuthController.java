@@ -1,8 +1,8 @@
-package com.desmond.HotelManagement.controller;
+package com.desmond.HotelBooking.controller;
 
-import com.desmond.HotelManagement.config.jwt.JwtTokenUtil;
-import com.desmond.HotelManagement.entity.User;
-import com.desmond.HotelManagement.service.UserService;
+import com.desmond.HotelBooking.config.jwt.JwtTokenUtil;
+import com.desmond.HotelBooking.entity.User;
+import com.desmond.HotelBooking.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;

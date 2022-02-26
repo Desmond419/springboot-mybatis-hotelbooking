@@ -1,8 +1,8 @@
-package com.desmond.HotelManagement.controller;
+package com.desmond.HotelBooking.controller;
 
-import com.desmond.HotelManagement.entity.User;
-import com.desmond.HotelManagement.service.UserService;
-import com.desmond.HotelManagement.utils.UUidUtil;
+import com.desmond.HotelBooking.entity.User;
+import com.desmond.HotelBooking.service.UserService;
+import com.desmond.HotelBooking.utils.UUidUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
