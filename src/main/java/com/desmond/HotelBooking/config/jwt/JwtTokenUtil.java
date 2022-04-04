@@ -10,7 +10,7 @@ import java.util.Date;
 
 public class JwtTokenUtil {
 
-    private static final long EXPIRE_TIME = 15*60*1000; // Token expired in 15 min
+    private static final long EXPIRE_TIME = 30*60*1000; // Token expired in 30 min
     private static final String TOKEN_SECRET = "secret_key";
 
     public static String sign(User user){
@@ -28,10 +28,7 @@ public class JwtTokenUtil {
         try {
             JWTVerifier verifier = JWT.require(Algorithm.HMAC256(TOKEN_SECRET)).withIssuer("auth0").build();
             DecodedJWT jwt = verifier.verify(token);
-            System.out.println("Successful");
-            System.out.println("issuer: " + jwt.getIssuer());
-            System.out.println("username: " + jwt.getClaim("username").asString());
-            System.out.println("Token expired in：      " + jwt.getExpiresAt());
+            //TODO - Check jwt expired
             return true;
         } catch (Exception e) {
             e.printStackTrace();

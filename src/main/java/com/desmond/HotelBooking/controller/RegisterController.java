@@ -2,7 +2,7 @@ package com.desmond.HotelBooking.controller;
 
 import com.desmond.HotelBooking.entity.User;
 import com.desmond.HotelBooking.service.UserService;
-import com.desmond.HotelBooking.utils.UUidUtil;
+import com.desmond.HotelBooking.utils.GenUUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,13 +21,13 @@ public class RegisterController {
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody User user) {
         try{
-            User foundUser = userService.findByUsername(user.getUsername());
+            User usernameExists = userService.findByUsername(user.getUsername());
 
-            if(foundUser != null){
+            if(usernameExists != null) {
                 return new ResponseEntity<>("Username already exists", HttpStatus.CONFLICT);
             } else {
                 if (user.getPassword().equals(user.getConfirmPassword())){
-                    user.setId(new UUidUtil().getUUID());
+                    user.setId(new GenUUID().getUUID());
                     user.setPassword(passwordEncoder.encode(user.getPassword()));
                     userService.addUser(user);
                     return new ResponseEntity<>(HttpStatus.CREATED);
@@ -35,7 +35,6 @@ public class RegisterController {
                 return new ResponseEntity<>("Passwords are not same", HttpStatus.BAD_REQUEST);
             }
         } catch (Exception e){
-            System.out.println(e.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

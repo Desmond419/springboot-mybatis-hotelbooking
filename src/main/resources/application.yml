@@ -2,8 +2,8 @@ spring:
   application:
     name: HotelBooking
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/hotel_management_db
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hotel_booking_db
     username: root
     password: 123456
     initialization-mode: always
@@ -14,4 +14,4 @@ spring:
       max-wait-millis: 150                       # 等待连接获取的最大超时时间
 
 mybatis:
-  mapper-locations: classpath:mybatis/*.xml    # mybatis mapper映射文件位置
+  mapper-locations: classpath:mybatis/*.xml      # mybatis mapper映射文件位置

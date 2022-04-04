@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS hotel_management_db;
-CREATE DATABASE IF NOT EXISTS hotel_management_db DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+DROP DATABASE IF EXISTS hotel_booking_db;
+CREATE DATABASE IF NOT EXISTS hotel_booking_db DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 
-use hotel_management_db;
+use hotel_booking_db;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
@@ -55,8 +55,7 @@ CREATE TABLE room
 (
     id           VARCHAR(255) NOT NULL PRIMARY KEY COMMENT '房间id',
     number       VARCHAR(255) NOT NULL COMMENT '房间编号',
-    hotel_id     VARCHAR(255) COMMENT '酒店id',
-    hotel_name   VARCHAR(255) NOT NULL COMMENT '酒店名',
+    price        VARCHAR(255) COMMENT '房间价格',
     type         VARCHAR(255) COMMENT '房间类型(单双人房等)',
     bed          int COMMENT '床位数',
     wifi         VARCHAR(255) COMMENT 'wifi(有无)',
@@ -65,9 +64,7 @@ CREATE TABLE room
     details      VARCHAR(255) COMMENT '房间特别信息',
     image        VARCHAR(255) COMMENT '图片文件夹名,图片名字(用于主页展示)',
     created_time TIMESTAMP                             DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-    updated_time TIMESTAMP ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
-
-    FOREIGN KEY (hotel_id) REFERENCES hotel(id) ON DELETE CASCADE ON UPDATE CASCADE
+    updated_time TIMESTAMP ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间'
 );
 
 -- ----------------------------
@@ -77,23 +74,20 @@ CREATE TABLE room
 DROP TABLE IF EXISTS booking_info;
 CREATE TABLE booking_info
 (
-    booking_id      VARCHAR(255) NOT NULL PRIMARY KEY COMMENT '预订id',
+    id              VARCHAR(255) NOT NULL PRIMARY KEY COMMENT '预订id',
     user_id         VARCHAR(255) COMMENT '用户id',
     fullname        VARCHAR(255) COMMENT '用户实名',
-    hotel_id        VARCHAR(255) COMMENT '酒店id',
-    hotel_name      VARCHAR(255) COMMENT '酒店名',
-    hotel_room_id      VARCHAR(255) COMMENT '酒店名',
-    hotel_room_no   VARCHAR(255) COMMENT '房间编号',
-    hotel_room_type VARCHAR(255) COMMENT '房型(单双人房等)',
+    room_id         VARCHAR(255) COMMENT '酒店名',
+    room_no         VARCHAR(255) COMMENT '房间编号',
+    room_type       VARCHAR(255) COMMENT '房型(单双人房等)',
     booking_time    TIMESTAMP COMMENT '预订日期',
     cost            DOUBLE COMMENT '订单费用',
     status          VARCHAR(255) COMMENT '订单状态:0-已下单，1-已付款，2-已消费，-1-已取消，-2-被删除',
-    create_time     TIMESTAMP                             DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-    update_time     TIMESTAMP ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
+    created_time     TIMESTAMP                             DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    updated_time     TIMESTAMP ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
 
     FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (hotel_id) REFERENCES hotel (id) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (hotel_room_id) REFERENCES room (id) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (room_id) REFERENCES room (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 SET FOREIGN_KEY_CHECKS = 1;

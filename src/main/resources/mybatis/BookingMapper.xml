@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.desmond.HotelBooking.dao.BookingDao">
+    <resultMap id="BaseResultMap"  type="com.desmond.HotelBooking.entity.Booking" >
+        <result column="id" property="id"  jdbcType="VARCHAR" />
+        <result column="user_id" property="userId"  jdbcType="VARCHAR" />
+        <result column="fullname" property="fullname"  jdbcType="VARCHAR" />
+        <result column="room_id" property="roomId"  jdbcType="VARCHAR" />
+        <result column="room_no" property="roomNo"  jdbcType="BIGINT" />
+        <result column="room_type" property="roomType"  jdbcType="VARCHAR" />
+        <result column="booking_time" property="bookingTime"  jdbcType="VARCHAR" />
+        <result column="cost" property="cost"  jdbcType="DOUBLE" />
+        <result column="status" property="status"  jdbcType="VARCHAR" />
+        <result column="created_time" property="createdTime"  jdbcType="TIMESTAMP" />
+        <result column="updated_time" property="updatedTime"  jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <select id="getAllBooking"  resultMap="BaseResultMap">
+        select * from booking_info
+    </select>
+
+    <select id="getAllBookingByUserId"  resultMap="BaseResultMap">
+        select * from booking_info where user_id =#{userId}
+    </select>
+
+    <insert id="addBooking">
+        insert into booking_info(id,user_id,fullname,room_id,room_no,room_type,booking_time,cost,status,created_time,updated_time)
+        values(#{id},#{userId},#{fullname},#{roomId},#{roomNo},#{roomType},now(),#{cost},#{status},now(),now())
+    </insert>
+
+    <update id="updateBooking">
+        update booking_info set
+        fullname = #{fullname},
+        room_id = #{roomId},
+        room_no = #{roomNo},
+        room_type = #{roomType},
+        cost = #{cost},
+        status = #{status},
+        updated_time = now()
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBookingById">
+        delete from booking_info where id =#{id}
+    </delete>
+</mapper>

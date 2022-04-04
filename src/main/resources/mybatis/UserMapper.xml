@@ -19,8 +19,30 @@
         select * from user where username=#{username}
     </select>
 
+    <select id="findUserById"  resultMap="BaseResultMap">
+        select * from user where id=#{id}
+    </select>
+
     <insert id="addUser">
         insert into user(id,username,email,password,dob,mobile_no,gender,role,image,created_time,updated_time)
         values(#{id},#{username},#{email},#{password},#{dob},#{mobileNo},#{gender},#{role},#{image},now(),now())
     </insert>
+
+    <update id="updateUser">
+        update user set
+        username = #{username},
+        email = #{email},
+        password = #{password},
+        dob = #{dob},
+        mobile_no = #{mobileNo},
+        gender = #{gender},
+        role = #{role},
+        image = #{image},
+        updated_time = now()
+        where id = #{id}
+    </update>
+
+    <delete id="deleteUserById">
+        delete from user where id =#{id}
+    </delete>
 </mapper>

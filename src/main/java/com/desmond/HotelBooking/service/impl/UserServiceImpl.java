@@ -12,6 +12,11 @@ public class UserServiceImpl implements UserService {
     UserDao userDao;
 
     @Override
+    public User findUserById(String id){
+        return userDao.findUserById(id);
+    }
+
+    @Override
     public User findByUsername(String name){
         return userDao.findByUsername(name);
     }
@@ -19,5 +24,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public void addUser(User user) {
         userDao.addUser(user);
+    }
+
+    @Override
+    public void updateUser(User user){
+        userDao.updateUser(user);
+    }
+
+    @Override
+    public void deleteUserById(String id){
+        userDao.deleteUserById(id);
     }
 }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.desmond.HotelBooking.dao.HotelDao">
+    <resultMap id="BaseResultMap"  type="com.desmond.HotelBooking.entity.Hotel" >
+        <result column="id" property="id"  jdbcType="VARCHAR" />
+        <result column="name" property="name"  jdbcType="VARCHAR" />
+        <result column="contact_no" property="contactNo"  jdbcType="VARCHAR" />
+        <result column="email" property="email"  jdbcType="VARCHAR" />
+        <result column="address" property="address"  jdbcType="VARCHAR" />
+        <result column="description" property="description"  jdbcType="VARCHAR" />
+        <result column="image" property="image"  jdbcType="VARCHAR" />
+        <result column="created_time" property="createdTime"  jdbcType="TIMESTAMP" />
+        <result column="updated_time" property="updatedTime"  jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <select id="getHotel"  resultMap="BaseResultMap">
+        select * from hotel
+    </select>
+
+    <insert id="addHotel">
+        insert into hotel(id,name,contact_no,email,address,description,image,created_time,updated_time)
+        values(#{id},#{name},#{contactNo},#{email},#{address},#{description},#{image},now(),now())
+    </insert>
+
+    <update id="updateHotel">
+        update hotel set
+        name = #{name},
+        contact_no = #{contactNo},
+        email = #{email},
+        address = #{address},
+        description = #{description},
+        image = #{image},
+        updated_time = now()
+        where id = #{id}
+    </update>
+
+    <delete id="deleteHotelById">
+        delete from hotel where id =#{id}
+    </delete>
+</mapper>

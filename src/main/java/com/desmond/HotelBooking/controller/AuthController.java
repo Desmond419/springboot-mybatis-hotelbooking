@@ -27,25 +27,18 @@ public class AuthController {
 
             if(foundUser != null){
                 /**
-                 * Hardcode login for development stage
+                 * Hardcode login for development phase
                  * Admin Credential
                  * username: admin
                  * password: admin
                  */
-                if(user.getUsername().equals("admin") && user.getPassword().equals("admin")){
+                if(passwordEncoder.matches(user.getPassword(), foundUser.getPassword()) ||
+                        user.getUsername().equals("admin") && user.getPassword().equals("admin")){
                     String token = JwtTokenUtil.sign(user); // Generate JWT token if user valid
                     if(token != null){
                         map.put("code", "200");
                         map.put("message", "Authorized");
-                        map.put("token", token);
-                        return map;
-                    }
-                }
-                if(passwordEncoder.matches(user.getPassword(), foundUser.getPassword())){
-                    String token = JwtTokenUtil.sign(user); // Generate JWT token if user valid
-                    if(token != null){
-                        map.put("code", "200");
-                        map.put("message", "Authorized");
+                        map.put("userId", foundUser.getId());
                         map.put("token", token);
                         return map;
                     }
@@ -56,7 +49,7 @@ public class AuthController {
                 }
             }
             map.put("code", "404");
-            map.put("message", "Not Found");
+            map.put("message", "User Not Found");
             return map;
         } catch (Exception e){
             map.put("code", "500");

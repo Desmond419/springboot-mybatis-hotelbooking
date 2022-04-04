@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.desmond.HotelBooking.dao.RoomDao">
+    <resultMap id="BaseResultMap"  type="com.desmond.HotelBooking.entity.Room" >
+        <result column="id" property="id"  jdbcType="VARCHAR" />
+        <result column="number" property="number"  jdbcType="VARCHAR" />
+        <result column="price" property="price"  jdbcType="VARCHAR" />
+        <result column="type" property="type"  jdbcType="VARCHAR" />
+        <result column="bed" property="bed"  jdbcType="BIGINT" />
+        <result column="wifi" property="wifi"  jdbcType="VARCHAR" />
+        <result column="air_conditioner" property="airConditioner"  jdbcType="VARCHAR" />
+        <result column="balcony" property="balcony"  jdbcType="VARCHAR" />
+        <result column="image" property="image"  jdbcType="VARCHAR" />
+        <result column="created_time" property="createdTime"  jdbcType="TIMESTAMP" />
+        <result column="updated_time" property="updatedTime"  jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <select id="getAllRoom"  resultMap="BaseResultMap">
+        select * from room
+    </select>
+
+    <insert id="addRoom">
+        insert into room(id,number,price,type,bed,wifi,air_conditioner,balcony,image,created_time,updated_time)
+        values(#{id},#{number},#{price},#{type},#{bed},#{wifi},#{airConditioner},#{balcony},#{image},now(),now())
+    </insert>
+
+    <update id="updateRoom">
+        update room set
+        number = #{number},
+        price = #{price},
+        type = #{type},
+        bed = #{bed},
+        wifi = #{wifi},
+        air_conditioner = #{airConditioner},
+        balcony = #{balcony},
+        image = #{image},
+        updated_time = now()
+        where id = #{id}
+    </update>
+
+    <delete id="deleteRoomById">
+        delete from room where id =#{id}
+    </delete>
+</mapper>
