@@ -4,15 +4,14 @@ import java.util.Date;
 
 public class User {
     private String id;
-    private String username;
+    private String firstName;
+    private String lastName;
     private String email;
     private String password;
     private String confirmPassword;
-    private String dob;
     private String mobileNo;
     private String gender;
     private String role;
-    private String image;
     private Date createdTime;
     private Date updatedTime;
 
@@ -24,12 +23,20 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -56,14 +63,6 @@ public class User {
         this.confirmPassword = confirmPassword;
     }
 
-    public String getDob() {
-        return dob;
-    }
-
-    public void setDob(String dob) {
-        this.dob = dob;
-    }
-
     public String getMobileNo() {
         return mobileNo;
     }
@@ -86,14 +85,6 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public Date getCreatedTime() {

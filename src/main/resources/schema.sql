@@ -13,22 +13,22 @@ DROP TABLE IF EXISTS user;
 CREATE TABLE user
 (
     id           VARCHAR(255) NOT NULL PRIMARY KEY COMMENT '用户id',
-    username     VARCHAR(255) NOT NULL COMMENT '昵称',
+    first_name   VARCHAR(255) NOT NULL COMMENT '姓氏',
+    last_name    VARCHAR(255) NOT NULL COMMENT '名字',
     email        VARCHAR(255) NOT NULL COMMENT '邮箱',
     password     VARCHAR(255) NOT NULL COMMENT '密码',
     dob          VARCHAR(255) COMMENT '生日',
     mobile_no    VARCHAR(255) COMMENT '电话',
     gender       VARCHAR(255) COMMENT '性别',
     role         VARCHAR(255) COMMENT '角色/权限',
-    image        VARCHAR(255) COMMENT '用户头像',
     created_time TIMESTAMP                             DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     updated_time TIMESTAMP ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间'
 );
 -- -----------
 -- Records of user
 -- -----------
-INSERT INTO user(id, username, email, password, dob, mobile_no, gender, role)
-values ('1', 'admin', 'admin@email.com', "admin", '040400', "0123456789", 'male', 'Admin');
+INSERT INTO user(id, first_name, last_name, email, password, mobile_no, gender, role)
+values ('1', 'admin', 'admin', 'admin@email.com', "admin", "0123456789", 'male', 'Admin');
 
 -- ----------------------------
 -- Table structure for hotel

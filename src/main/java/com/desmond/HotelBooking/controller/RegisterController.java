@@ -19,12 +19,12 @@ public class RegisterController {
     private PasswordEncoder passwordEncoder;
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody User user) {
+    public ResponseEntity<String> register(@ModelAttribute User user) {
         try{
-            User usernameExists = userService.findByUsername(user.getUsername());
+            User usernameExists = userService.findByUserEmail(user.getEmail());
 
             if(usernameExists != null) {
-                return new ResponseEntity<>("Username already exists", HttpStatus.CONFLICT);
+                return new ResponseEntity<>("This email address is already being used", HttpStatus.CONFLICT);
             } else {
                 if (user.getPassword().equals(user.getConfirmPassword())){
                     user.setId(new GenUUID().getUUID());

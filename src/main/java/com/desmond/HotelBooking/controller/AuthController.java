@@ -23,17 +23,17 @@ public class AuthController {
     public Map<String,Object> login(@RequestBody User user) {
         Map<String,Object> map = new HashMap<>();
         try{
-            User foundUser = userService.findByUsername(user.getUsername());
+            User foundUser = userService.findByUserEmail(user.getEmail());
 
             if(foundUser != null){
                 /**
                  * Hardcode login for development phase
                  * Admin Credential
-                 * username: admin
+                 * email: admin@email.com
                  * password: admin
                  */
                 if(passwordEncoder.matches(user.getPassword(), foundUser.getPassword()) ||
-                        user.getUsername().equals("admin") && user.getPassword().equals("admin")){
+                        user.getEmail().equals("admin@email.com") && user.getPassword().equals("admin")){
                     String token = JwtTokenUtil.sign(user); // Generate JWT token if user valid
                     if(token != null){
                         map.put("code", "200");
